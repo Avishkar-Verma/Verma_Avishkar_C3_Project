@@ -68,4 +68,9 @@ public class Restaurant {
         return name;
     }
 
+    public int getTotalOrderCost(List<String> itemsSelected) {
+
+        return -1;
+    }
+
 }

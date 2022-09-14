@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,6 +40,37 @@ class RestaurantTest {
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    //<<<<<<<<<<<<<<<<<<<<<<<<<ORDER_VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void selecting_item_from_menu_should_increase_the_total_order_value() {
+
+        List<String> itemsSelected = new ArrayList<String>();
+        restaurant.addToMenu("Veg Noodles", 150);
+        restaurant.addToMenu("Dahi Ke Kabab", 384);
+        itemsSelected.add("Veg Noodles"); // item worth Rs 150 added
+        itemsSelected.add("Dahi Ke Kabab"); // item worth Rs 384 added
+        assertEquals(534, restaurant.getTotalOrderCost(itemsSelected));
+    }
+
+    @Test
+    public void removing_item_from_menu_should_decrease_the_total_order_value() {
+        List<String> itemsSelected = new ArrayList<String>();
+        restaurant.addToMenu("Veg Noodles", 150);
+        restaurant.addToMenu("Dahi Ke Kabab", 384);
+        itemsSelected.add("Veg Noodles"); // item worth Rs 150 added
+        itemsSelected.add("Dahi Ke Kabab"); // item worth Rs 384 added
+        itemsSelected.remove("Veg Noodles"); // item worth Rs 150 removing
+        assertEquals(384, restaurant.getTotalOrderCost(itemsSelected));
+    }
+
+    @Test
+    public void the_total_order_value_should_be_zero_if_cart_is_empty() {
+        List<String> itemsSelected = new ArrayList<String>(); // no item is selected from menu
+        assertEquals(0, restaurant.getTotalOrderCost(itemsSelected));
+    }
+
+    //<<<<<<<<<<<<<<<<<<<<<<<<<ORDER_VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
