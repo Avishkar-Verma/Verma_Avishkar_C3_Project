@@ -60,6 +60,7 @@ class RestaurantTest {
         restaurant.addToMenu("Dahi Ke Kabab", 384);
         itemsSelected.add("Veg Noodles"); // item worth Rs 150 added
         itemsSelected.add("Dahi Ke Kabab"); // item worth Rs 384 added
+        assertEquals(534, restaurant.getTotalOrderCost(itemsSelected));
         itemsSelected.remove("Veg Noodles"); // item worth Rs 150 removing
         assertEquals(384, restaurant.getTotalOrderCost(itemsSelected));
     }

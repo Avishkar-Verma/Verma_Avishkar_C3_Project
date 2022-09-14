@@ -17,4 +17,12 @@ public class Item {
                 + "\n"
                 ;
     }
+
+    /**
+     * This method is added to get the price of the item
+     * @return
+     */
+    public int getPrice() {
+        return price;
+    }
 }

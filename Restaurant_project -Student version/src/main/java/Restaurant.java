@@ -68,9 +68,22 @@ public class Restaurant {
         return name;
     }
 
+    /**
+     * This method is added to get the total cost of all the items in the selected list.
+     * @param itemsSelected
+     * @return
+     */
     public int getTotalOrderCost(List<String> itemsSelected) {
+        int totalCost = 0;
+        Item item;
+        for(String itemList : itemsSelected) {
+            item = findItemByName(itemList);
+            if (item!=null) {
+                totalCost += item.getPrice();
+            }
 
-        return -1;
+        }
+        return totalCost;
     }
 
 }
